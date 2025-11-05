@@ -1,5 +1,6 @@
 <header>
-    <div class="container-fluid">
-        <h1 class="text-center">El rincon del Marqués</h1>
+    <div class="container-fluid text-center d-flex justify-content-center align-items-center">
+        <img src="img/icono.png" alt="" width="80px">
+        <h1 class="text-light mb-0 ms-3">El rincón del Marqués</h1>
     </div>
 </header>

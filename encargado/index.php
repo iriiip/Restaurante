@@ -1,12 +1,12 @@
 <!-- Head -->
 <?php
-include("head.php");
+include("../head.php");
 ?>
 
 <body>
     <!-- Header -->
     <?php
-    include("header.php");
+    include("../header.php");
     ?>
 
     <!-- Section -->
@@ -45,7 +45,7 @@ include("head.php");
 
     <!-- Footer -->
     <?php
-    include("footer.php");
+    include("../footer.php");
     ?>
 </body>
 

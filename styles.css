@@ -1,7 +1,21 @@
 body {
     font-family: Arial, sans-serif;
-    color: white;
-    background-color: black;
+    color: #E0E0E0;
+    background-color: #121212;
 }
 
-footer {}
+.caja {
+    background-color: #1E1E1E;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    border: 1px solid #2E2E2E;
+    border-radius: 12px;
+    margin: 0px 10px;
+}
+
+header {
+    background-color: #181818;
+}
+
+.footer {
+    background-color: #181818;
+}
