@@ -1,3 +1,7 @@
+<?php
+include("../seguridad2.php");
+?>
+
 <!-- Head -->
 <?php
 include("../head.php");
@@ -7,6 +11,10 @@ include("../head.php");
     <!-- Header -->
     <?php
     include("../header.php");
+    ?>
+
+    <?php
+    include("../navbar.php");
     ?>
 
     <!-- Section -->
@@ -30,7 +38,7 @@ include("../head.php");
                             <button class="btn btn-secondary" type="submit">Iniciar sesión</button>
                         </div>
                     </form>
-                    <div action="" class="row caja text-center justify-content-center mt-5">
+                    <div action="" class="row text-center justify-content-center mt-3">
                         <div class="col-12 m-3">
                             ¿No tienes cuenta? Registrate.
                         </div>
