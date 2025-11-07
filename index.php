@@ -38,7 +38,7 @@ include("head.php");
         }
     }
     ?>
-    <section>
+    <section class="d-flex align-items-center">
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col col-md-10 col-lg-8 col-xl-7">
@@ -48,13 +48,25 @@ include("head.php");
                         </div>
                         <div class="col-12 input-group mb-3">
                             <span class="input-group-text bi bi-person-fill"></span>
-                            <input class="form-control" type="text" name="dni" id="dni" placeholder="dni" required>
+                            <input class="form-control" type="text" name="dni" id="dni" placeholder="Dni" required>
                         </div>
                         <div class="col-12 input-group mb-3">
                             <span class="input-group-text bi bi-lock-fill"></span>
-                            <input class="form-control" type="password" name="pass" id="pass" placeholder="contraseña" required>
+                            <input class="form-control" type="password" name="pass" id="pass" placeholder="Contraseña" required>
                         </div>
-                        <div class="col-6 mb-3 d-grid mx-auto">
+                        <div class="col-12">
+                            <small class="text-danger">
+                                <?php
+                                if (isset($_SESSION['sms'])) {
+                                    echo $_SESSION['sms'];
+                                    unset($_SESSION['sms']);
+                                }                                    
+                                else 
+                                    echo ("Todos los campos son obligatorios");
+                                ?>
+                            </small>
+                        </div>
+                        <div class="col-12 mb-3 d-grid mx-auto mt-3">
                             <button class="btn btn-secondary" type="submit">Iniciar sesión</button>
                         </div>
                     </form>
@@ -63,7 +75,7 @@ include("head.php");
                             ¿No tienes cuenta? Registrate.
                         </div>
                         <div class="col-12 mb-3">
-                            <button class="btn btn-secondary" type="button"><a href="registro.php" style="text-decoration: none" ; class="text-light">Registrarse</a></button>
+                            <a href="registro.php" style="text-decoration: none" ; class="btn btn-secondary text-light">Registrarse</a>
                         </div>
                     </div>
                 </div>

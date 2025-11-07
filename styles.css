@@ -4,6 +4,10 @@ body {
     background-color: #121212;
 }
 
+section {
+    min-height: 70vh;
+}
+
 .caja {
     background-color: #1E1E1E;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
@@ -16,6 +20,8 @@ header {
     background-color: #181818;
 }
 
-.footer {
+footer {
+    position: fixed;
+    bottom: 0;
     background-color: #181818;
 }

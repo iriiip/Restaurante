@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2025 a las 15:37:07
+-- Tiempo de generación: 07-11-2025 a las 14:35:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -115,14 +115,23 @@ CREATE TABLE `reserva` (
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `dni` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `apellidos` varchar(255) NOT NULL,
   `rol` int(11) NOT NULL COMMENT '0-Usuario 1-Camarero 2-Encargado',
   `email` varchar(255) NOT NULL,
   `telefono` varchar(255) NOT NULL,
   `direccion` varchar(255) NOT NULL,
   `estado` int(11) NOT NULL COMMENT '0-Normal 1-Bloqueado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`dni`, `contrasena`, `nombre`, `rol`, `email`, `telefono`, `direccion`, `estado`) VALUES
+('12345678A', '1234', 'cliente', 0, 'cliente@restaurante.com', '000000000', 'El rincón del Marqués', 0),
+('12345678B', '1234', 'camarero', 1, 'camarero@restaurante.com', '000000000', 'El rincón del Marqués', 0),
+('12345678C', '1234', 'encargado', 2, 'encargado@restaurante.com', '000000000', 'El rincón del Marqués', 0);
 
 --
 -- Índices para tablas volcadas

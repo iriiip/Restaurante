@@ -1,5 +1,5 @@
-<footer>
-    <div class="container-fluid fixed-bottom footer">
-        <div class="col text-center">© El rincón del Marqués</div>
-    </div>
-</footer>
+<div class="container-fluid">
+    <footer class="row footer w-100">
+        <div class="text-center">© El rincón del Marqués</div>
+    </footer>
+</div>
