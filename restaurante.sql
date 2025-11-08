@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2025 a las 14:35:41
+-- Tiempo de generación: 08-11-2025 a las 17:09:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -34,6 +34,18 @@ CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre`) VALUES
+(6, 'Carnes'),
+(8, 'Mariscos'),
+(9, 'Bebidas'),
+(11, 'Pescados'),
+(12, 'Postres'),
+(13, 'Tapas');
 
 -- --------------------------------------------------------
 
@@ -91,6 +103,20 @@ CREATE TABLE `producto` (
   `categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
+(14, 'Rodaballo', 3, 3, 1, 11),
+(18, 'Producto', 0, 0, 0, 6),
+(19, 'Producto', 0, 0, 0, 8),
+(20, 'Producto', 0, 0, 0, 9),
+(21, 'Producto', 0, 0, 0, 11),
+(22, 'Producto', 0, 0, 0, 12),
+(23, 'Producto', 0, 0, 0, 13),
+(24, 'Producto', 0, 0, 0, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -115,23 +141,23 @@ CREATE TABLE `reserva` (
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `dni` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `rol` int(11) NOT NULL COMMENT '0-Usuario 1-Camarero 2-Encargado',
   `email` varchar(255) NOT NULL,
   `telefono` varchar(255) NOT NULL,
   `direccion` varchar(255) NOT NULL,
-  `estado` int(11) NOT NULL COMMENT '0-Normal 1-Bloqueado'
+  `estado` int(11) NOT NULL COMMENT '0-Normal 1-Bloqueado',
+  `contrasena` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`dni`, `contrasena`, `nombre`, `rol`, `email`, `telefono`, `direccion`, `estado`) VALUES
-('12345678A', '1234', 'cliente', 0, 'cliente@restaurante.com', '000000000', 'El rincón del Marqués', 0),
-('12345678B', '1234', 'camarero', 1, 'camarero@restaurante.com', '000000000', 'El rincón del Marqués', 0),
-('12345678C', '1234', 'encargado', 2, 'encargado@restaurante.com', '000000000', 'El rincón del Marqués', 0);
+INSERT INTO `usuario` (`dni`, `nombre`, `rol`, `email`, `telefono`, `direccion`, `estado`, `contrasena`) VALUES
+('12345678A', 'cliente cliente', 0, 'cliente@restaurante.com', '123123123', 'cliente', 0, '1234'),
+('12345678B', 'camarero camarero', 1, 'camarero@restaurante.com', '123123123', 'camarero', 0, '1234'),
+('12345678C', 'encargado encargado', 2, 'encargado@restaurante.com', '123123123', 'encargado', 0, '1234');
 
 --
 -- Índices para tablas volcadas
@@ -193,7 +219,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
@@ -205,7 +231,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restricciones para tablas volcadas

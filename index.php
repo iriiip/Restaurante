@@ -42,7 +42,7 @@ include("head.php");
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col col-md-10 col-lg-8 col-xl-7">
-                    <form action="" method="POST" class="row caja text-center ">
+                    <form action="" method="POST" class="row caja text-center">
                         <div class="col-auto my-3 mx-auto">
                             <h2>INICIO DE SESIÓN</h2>
                         </div>
@@ -60,9 +60,7 @@ include("head.php");
                                 if (isset($_SESSION['sms'])) {
                                     echo $_SESSION['sms'];
                                     unset($_SESSION['sms']);
-                                }                                    
-                                else 
-                                    echo ("Todos los campos son obligatorios");
+                                }
                                 ?>
                             </small>
                         </div>
