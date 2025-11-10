@@ -25,3 +25,7 @@ footer {
     bottom: 0;
     background-color: #181818;
 }
+
+.tabla {
+    border: 1px solid #121212;
+}

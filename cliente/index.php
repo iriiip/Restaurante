@@ -1,5 +1,8 @@
 <?php
 include("seguridad.php");
+if (isset($_SESSION['mesa']) && isset($_SESSION['comensales'])) {
+    header("LOCATION:carta.php");
+}
 ?>
 
 <!-- Head -->
@@ -18,21 +21,40 @@ include("../head.php");
     ?>
 
     <!-- Section -->
-    <section>
+    <section class="d-flex align-items-center">
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col col-md-10 col-lg-8 col-xl-7">
-                    <form action="" method="POST" class="row justify-content-center caja text-center">
+                    <form action="carta.php" method="POST" class="row justify-content-center caja text-center p-3">
                         <div class="col-12 mt-3 mb-3">
                             <h2>MESAS</h2>
                         </div>
+                        <div class="col-12 mb-3">
+                            <select name="mesa" id="mesa" class="form-select mb-3">
+                                <option value="" selected>Elige una mesa</option>
+                                <?php
+                                include("../conexion.php");
+                                $consulta = "SELECT * FROM mesa WHERE estado=0";
+                                $result = mysqli_query($conn, $consulta);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $mesa = $row['num'];
+                                    echo ("
+                            <option value='$mesa'>Mesa $mesa</option>
+                            ");
+                                }
+                                ?>
+                            </select>
+                            <input type="text" name="comensales" id="comensales" class="form-control" placeholder="Número de comensales">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <button type="submit" class="btn btn-secondary w-100">Seleccionar</button>
+                        </div>
                         <?php
-                        include("../conexion.php");
-                        $consulta = "SELECT * FROM mesa";
-                        $result = mysqli_query($conn, $consulta);
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            
-                        }
+                        if (isset($_SESSION['sms'])) {
+                            $sms = $_SESSION['sms'];
+                            echo ("<small class='text-danger'>$sms</small>");
+                            unset($_SESSION['sms']);
+                        }                            
                         ?>
                     </form>
                 </div>

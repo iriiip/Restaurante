@@ -21,7 +21,7 @@ include("../head.php");
     <section>
         <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col col-md-10 col-lg-8 col-xl-7">
+                <div class="col-12">
                     <div class="row caja text-center p-3 justify-content-center justify-content-md-around">
                         <div class="col-12 h1">Productos</div>
                         <form action="anadirProducto.php" method="POST">
@@ -45,6 +45,16 @@ include("../head.php");
                             </div>
                         </form>
                         <div class='col-12 mt-5'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de modificar un producto</div>
+                        <table class="table tabla table-dark text-light">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio (€)</th>
+                                <th>Stock</th>
+                                <th>Categoría</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
                         <?php
                         include("../conexion.php");
                         $consulta = "SELECT * FROM producto";
@@ -52,8 +62,8 @@ include("../head.php");
                         while ($row = mysqli_fetch_assoc($result)) {
                             $id = $row['id'];
                             $nombre = $row['nombre'];
-                            $precio = $row['precio'] . "€";
-                            $stock = $row['stock'] . " unidades";
+                            $precio = $row['precio'];
+                            $stock = $row['stock'];
                             $estado = $row['estado'];
                             $categoria = $row['categoria'];
 
@@ -63,14 +73,12 @@ include("../head.php");
                                 $cambiar = "Activar";
 
                             echo ("
-                            <div class='col-12 col-md-6 col-xl-4'>
                             <form method='POST' action='modificarProducto.php'>
-                            <div class='row mt-3'>
-                            <div class='col-12'><input type='text' class='form-control' placeholder='Nombre' value='$nombre' name='nombre' id='nombre'></div>
-                            <div class='col-12'><input type='text' class='form-control mt-1' placeholder='Precio' value='$precio' name='precio'></div>
-                            <div class='col-12'><input type='text' class='form-control mt-1' placeholder='Stock' value='$stock' name='stock'></div>
-                            <div class='col-12'>
-                            <select class='form-select mt-1' name='categoria'>");
+                            <tr>
+                            <td><input type='text' class='form-control' placeholder='Nombre' value='$nombre' name='nombre' id='nombre'></td>
+                            <td><input type='text' class='form-control' placeholder='Precio' value='$precio' name='precio'></td>
+                            <td><input type='text' class='form-control' placeholder='Stock' value='$stock' name='stock'></td>
+                            <td><select class='form-select' name='categoria'>");
                             $consultaCateg = "SELECT * FROM categorias WHERE id IN(SELECT categoria FROM producto WHERE id='$id')";
                             $resultCateg = mysqli_query($conn, $consultaCateg);
                             $row = mysqli_fetch_assoc($resultCateg);
@@ -87,17 +95,17 @@ include("../head.php");
                                     <option value='$idCateg'>$categoria</option>
                                     ");
                             }
-                            echo ("</select></div>
+                            echo ("</select></td>
                             <input type='hidden' value='$id' name='id'>
-                            <div class='col mt-1'><button class='btn btn-secondary w-100' type='submit'>Modificar</button></div>
-                            <div class='col mt-1'><a class='btn btn-secondary w-100' href='eliminarProducto.php?id=$id' role='button'>Eliminar</a></div>
-                            <div class='col mt-1'><a class='btn btn-secondary w-100 mb-3' href='productoActivado.php?id=$id&estado=$estado' role='button'>$cambiar</a></div>                          
-                            </div>
-                            </form>
-                            </div>                            
+                            <td><button class='btn btn-secondary w-100' type='submit'>Modificar</button></td>
+                            <td><a class='btn btn-secondary w-100' href='eliminarProducto.php?id=$id' role='button'>Eliminar</a></td>
+                            <td><a class='btn btn-secondary w-100 mb-3' href='productoActivado.php?id=$id&estado=$estado' role='button'>$cambiar</a></td> 
+                            </tr>                         
+                            </form>                          
                             ");
                         }
                         ?>
+                        </table>
                     </div>
                 </div>
             </div>
