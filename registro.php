@@ -67,7 +67,7 @@ include("head.php");
                         <div class="col-12 m-3">
                             ¿Ya tienes cuenta? Inicia sesión.
                         </div>
-                        <div class="col-12 mb-3">
+                        <div class="col-12 mb-5">
                             <a href="index.php" style="text-decoration: none" ; class="btn btn-secondary text-light">Iniciar sesión</a>
                         </div>
                     </div>

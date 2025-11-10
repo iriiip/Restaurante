@@ -44,7 +44,7 @@ include("../head.php");
                                 </select>
                             </div>
                         </form>
-                        <div class='col-12 mt-5 mb-3'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de modificar un producto</div>
+                        <div class='col-12 mt-5'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de modificar un producto</div>
                         <?php
                         include("../conexion.php");
                         $consulta = "SELECT * FROM producto";
@@ -65,7 +65,7 @@ include("../head.php");
                             echo ("
                             <div class='col-12 col-md-6 col-xl-4'>
                             <form method='POST' action='modificarProducto.php'>
-                            <div class='row'>
+                            <div class='row mt-3'>
                             <div class='col-12'><input type='text' class='form-control' placeholder='Nombre' value='$nombre' name='nombre' id='nombre'></div>
                             <div class='col-12'><input type='text' class='form-control mt-1' placeholder='Precio' value='$precio' name='precio'></div>
                             <div class='col-12'><input type='text' class='form-control mt-1' placeholder='Stock' value='$stock' name='stock'></div>
