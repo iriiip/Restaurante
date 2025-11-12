@@ -45,6 +45,7 @@ include("../head.php");
                             </div>
                         </form>
                         <div class='col-12 mt-5'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de modificar un producto</div>
+                        <div class="table-responsive">
                         <table class="table tabla table-dark text-light">
                             <tr>
                                 <th>Producto</th>
@@ -106,6 +107,7 @@ include("../head.php");
                         }
                         ?>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>

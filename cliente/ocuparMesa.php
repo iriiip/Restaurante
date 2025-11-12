@@ -1,5 +1,6 @@
 <?php
-if (!isset($_SESSION['mesa']) && !isset($_SESSION['comensales'])) {
+include ("comprobarOcupado.php");
+if (!ocupando()) {
     include("../conexion.php");
     $mesa = $_POST['mesa'];
     $consulta = "UPDATE mesa SET estado=1 WHERE num='$mesa'";

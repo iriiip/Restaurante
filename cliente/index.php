@@ -1,10 +1,9 @@
 <?php
 include("seguridad.php");
-//$dni = $_SESSION['dni'];
-//$consulta = "SELECT estado FROM pedido WHERE dni='$dni' && NOT estado=2";
-//$result = mysqli_query($conn,$consulta);
-//if (mysqli_num_rows($result)!=0)
-//    header("LOCATION:carta.php");
+include("../conexion.php");
+include("comprobarOcupado.php");
+if(ocupando())
+    header("LOCATION:carta.php");
 ?>
 
 <!-- Head -->
