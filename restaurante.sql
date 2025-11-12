@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2025 a las 18:07:20
+-- Tiempo de generación: 12-11-2025 a las 11:45:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -70,9 +70,9 @@ INSERT INTO `mesa` (`num`, `estado`) VALUES
 (4, 1),
 (5, 1),
 (6, 1),
-(7, 1),
-(8, 1),
-(9, 1);
+(7, 0),
+(8, 0),
+(9, 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,6 @@ CREATE TABLE `pedido` (
   `id` int(11) NOT NULL,
   `estado` int(11) NOT NULL COMMENT '0-En curso 1-Entregado 2-Pagado',
   `dni` varchar(255) NOT NULL,
-  `comentarios` varchar(255) NOT NULL,
   `numMesa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -93,8 +92,8 @@ CREATE TABLE `pedido` (
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`id`, `estado`, `dni`, `comentarios`, `numMesa`) VALUES
-(864, 1, '12345678A', '', 9);
+INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`) VALUES
+(868, 1, '12345678A', 6);
 
 -- --------------------------------------------------------
 
@@ -106,7 +105,8 @@ DROP TABLE IF EXISTS `pedidoproducto`;
 CREATE TABLE `pedidoproducto` (
   `idPedido` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL
+  `cantidad` int(11) NOT NULL,
+  `comentario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -246,7 +246,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=866;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=869;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

@@ -25,15 +25,16 @@ include("../head.php");
                     <div class="row caja text-center p-3 justify-content-center justify-content-md-around">
                         <div class="col-12 h1">Categorías</div>
                         <div class='col-12 mt-2 mb-3'><a class='btn btn-secondary' href='anadirCategoria.php' role='button'>Añadir categoría</a></div>
-                        <table class="table table-responsive tabla table-dark text-light">
-                            <?php
-                            include("../conexion.php");
-                            $consulta = "SELECT * FROM categorias";
-                            $result = mysqli_query($conn, $consulta);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $id = $row['id'];
-                                $nombre = $row['nombre'];
-                                echo ("
+                        <div class="table-responsive">
+                            <table class="table tabla table-dark text-light">
+                                <?php
+                                include("../conexion.php");
+                                $consulta = "SELECT * FROM categorias";
+                                $result = mysqli_query($conn, $consulta);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $id = $row['id'];
+                                    $nombre = $row['nombre'];
+                                    echo ("
                             <form method='POST' action='modificarCategoria.php'>
                             <tr>
                             <td>$nombre</td>
@@ -44,17 +45,18 @@ include("../head.php");
                             </tr>
                             </form>
                             ");
-                            }
-                            ?>
-                            <div class="col-12">
-                                <?php
-                                if (isset($_SESSION['sms'])) {
-                                    $sms = $_SESSION['sms'];
-                                    echo ("<small class='text-danger'>$sms</small>");
-                                    unset($_SESSION['sms']);
                                 }
                                 ?>
-                        </table>
+                                <div class="col-12">
+                                    <?php
+                                    if (isset($_SESSION['sms'])) {
+                                        $sms = $_SESSION['sms'];
+                                        echo ("<small class='text-danger'>$sms</small>");
+                                        unset($_SESSION['sms']);
+                                    }
+                                    ?>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
