@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2025 a las 11:45:46
+-- Tiempo de generación: 13-11-2025 a las 10:22:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -65,11 +65,11 @@ CREATE TABLE `mesa` (
 
 INSERT INTO `mesa` (`num`, `estado`) VALUES
 (1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
+(2, 0),
+(3, 0),
+(4, 0),
+(5, 0),
+(6, 0),
 (7, 0),
 (8, 0),
 (9, 0);
@@ -93,7 +93,7 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`) VALUES
-(868, 1, '12345678A', 6);
+(885, 1, '12345678A', 1);
 
 -- --------------------------------------------------------
 
@@ -103,6 +103,7 @@ INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`) VALUES
 
 DROP TABLE IF EXISTS `pedidoproducto`;
 CREATE TABLE `pedidoproducto` (
+  `idLinea` int(11) NOT NULL,
   `idPedido` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -208,7 +209,7 @@ ALTER TABLE `pedido`
 -- Indices de la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  ADD PRIMARY KEY (`idPedido`,`idProducto`),
+  ADD PRIMARY KEY (`idLinea`),
   ADD KEY `idProducto` (`idProducto`);
 
 --
@@ -240,13 +241,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=869;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=886;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidoproducto`
+--
+ALTER TABLE `pedidoproducto`
+  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -269,8 +276,7 @@ ALTER TABLE `pedido`
 -- Filtros para la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  ADD CONSTRAINT `pedidoproducto_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `pedidoproducto_ibfk_2` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `pedidoproducto_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`

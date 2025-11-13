@@ -1,6 +1,6 @@
 <?php
 include ("comprobarOcupado.php");
-if (!ocupando()) {
+if (!ocupando() && $_SERVER['REQUEST_METHOD']==='POST') {
     include("../conexion.php");
     $mesa = $_POST['mesa'];
     $consulta = "UPDATE mesa SET estado=1 WHERE num='$mesa'";

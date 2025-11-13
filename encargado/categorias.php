@@ -24,7 +24,12 @@ include("../head.php");
                 <div class="col col-md-10 col-lg-8 col-xl-7">
                     <div class="row caja text-center p-3 justify-content-center justify-content-md-around">
                         <div class="col-12 h1">Categorías</div>
-                        <div class='col-12 mt-2 mb-3'><a class='btn btn-secondary' href='anadirCategoria.php' role='button'>Añadir categoría</a></div>
+                        <form action="anadirCategoria.php" method="POST">
+                            <div class='col-12 mt-2 mb-3 input-group'>
+                                <input type="text" name="categoria" id="categoria" class="form-control" placeholder="Nombre" required>
+                                <button class='btn btn-secondary' type='submit'>Añadir categoría</button>
+                            </div>
+                        </form>
                         <div class="table-responsive">
                             <table class="table tabla table-dark text-light">
                                 <?php

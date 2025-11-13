@@ -17,6 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['sms'] = "Ya existe una cuenta con este dni";
         } else if ($row['email'] == $mail) {
             $_SESSION['sms'] = "Ya existe una cuenta con este e-mail";
+        } else if (strlen($dni)!=9) {
+            $_SESSION['sms'] = "Longitud del dni no válida";
+        } else if (strlen($tlf)!=9) {
+            $_SESSION['sms'] = "Longitud del teléfono no válida";
         }
     }
 

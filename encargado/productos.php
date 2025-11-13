@@ -24,26 +24,7 @@ include("../head.php");
                 <div class="col-12">
                     <div class="row caja text-center p-3 justify-content-center justify-content-md-around">
                         <div class="col-12 h1">Productos</div>
-                        <form action="anadirProducto.php" method="POST">
-                            <div class='col-12 mt-2 mb-4'><button class='btn btn-secondary'>Añadir producto</button></div>
-                            <div class="col">
-                                <select name="categoria" id="categoria" class="form-select mb-3">
-                                    <option selected>Elige una categoría</option>
-                                    <?php
-                                    include("../conexion.php");
-                                    $consulta = "SELECT * FROM categorias";
-                                    $result = mysqli_query($conn, $consulta);
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        $categoria = $row['nombre'];
-                                        $id = $row['id'];
-                                        echo ("
-                                    <option value='$id'>$categoria</option>
-                                    ");
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </form>
+                            <div class='col-12 mt-2'><a class='btn btn-secondary' role="button" href="menuAnadirProducto.php">Añadir producto</a></div>
                         <div class='col-12 mt-5'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de modificar un producto</div>
                         <div class="table-responsive">
                         <table class="table tabla table-dark text-light">

@@ -14,7 +14,7 @@ include("../head.php");
     ?>
 
     <?php
-    include("../navbar.php");
+    include("navbarEncargado.php");
     ?>
 
     <!-- Section -->

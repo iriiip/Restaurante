@@ -1,6 +1,5 @@
 <?php
 include("seguridad.php");
-include("../conexion.php");
 include("comprobarOcupado.php");
 if(ocupando())
     header("LOCATION:carta.php");

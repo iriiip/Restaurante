@@ -1,6 +1,8 @@
 <?php
 include("seguridadCarta.php");
 include("ocuparMesa.php");
+if (!ocupando())
+    header("LOCATION:index.php");
 ?>
 
 <!-- Head -->
@@ -15,7 +17,7 @@ include("../head.php");
     ?>
 
     <?php
-    include("../navbar.php");
+    include("navbarCliente.php");
     ?>
 
     <!-- Section -->
