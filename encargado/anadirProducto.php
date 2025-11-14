@@ -6,7 +6,7 @@ if ($_POST['categoria'] != "") {
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
     $categoria = $_POST['categoria'];
-    $consulta = "INSERT INTO producto VALUES(NULL,'Producto','$nombre','$precio','$stock','$categoria')";
+    $consulta = "INSERT INTO producto VALUES(NULL,'$nombre','$precio','$stock',0,'$categoria')";
     mysqli_query($conn, $consulta);
 }
 header("LOCATION:productos.php");

@@ -27,23 +27,24 @@ include("../head.php");
                         <div class='col-12 mt-2 mb-3'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de añadir un producto</div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Producto</label>
-                            <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" value=<?php echo($_GET['nombre']); ?>>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Precio (€)</label>
-                            <input type="text" class="form-control" placeholder="Precio" name="precio">
+                            <input type="text" class="form-control" placeholder="Precio" name="precio" value=<?php echo($_GET['precio']); ?>>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Stock</label>
-                            <input type="text" class="form-control" placeholder="Stock" name="stock">
+                            <input type="text" class="form-control" placeholder="Stock" name="stock" value=<?php echo($_GET['stock']); ?>>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Categoría</label>
                             <select name="categoria" id="" class="form-select">
-                                <option value="">Elige una categoria</option>
+                                <option value=<?php echo($_GET['categoria']); ?> selected><?php echo($_GET['nombreCateg']); ?></option>
                                 <?php
                                 include("../conexion.php");
-                                $consulta = "SELECT * FROM categorias";
+                                $categoria = $_GET['categoria'];
+                                $consulta = "SELECT * FROM categorias WHERE NOT id='$categoria'";
                                 $result = mysqli_query($conn, $consulta);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $idCateg = $row['id'];

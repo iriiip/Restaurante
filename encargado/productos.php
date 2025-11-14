@@ -1,4 +1,7 @@
 <?php
+
+use Dom\Mysql;
+
 include("seguridad.php");
 ?>
 
@@ -44,7 +47,7 @@ include("../head.php");
                         while ($row = mysqli_fetch_assoc($result)) {
                             $id = $row['id'];
                             $nombre = $row['nombre'];
-                            $precio = $row['precio'];
+                            $precio = $row['precio']."€";
                             $stock = $row['stock'];
                             $estado = $row['estado'];
                             $categoria = $row['categoria'];
@@ -54,36 +57,22 @@ include("../head.php");
                             else
                                 $cambiar = "Activar";
 
-                            echo ("
-                            <form method='POST' action='modificarProducto.php'>
-                            <tr>
-                            <td><input type='text' class='form-control' placeholder='Nombre' value='$nombre' name='nombre' id='nombre'></td>
-                            <td><input type='text' class='form-control' placeholder='Precio' value='$precio' name='precio'></td>
-                            <td><input type='text' class='form-control' placeholder='Stock' value='$stock' name='stock'></td>
-                            <td><select class='form-select' name='categoria'>");
-                            $consultaCateg = "SELECT * FROM categorias WHERE id IN(SELECT categoria FROM producto WHERE id='$id')";
-                            $resultCateg = mysqli_query($conn, $consultaCateg);
-                            $row = mysqli_fetch_assoc($resultCateg);
-                            $idCateg = $row['id'];
-                            $categoria = $row['nombre'];
-                            echo ("<option selected value=$idCateg>$categoria</option>");
+                            $consultaCateg = "SELECT nombre FROM categorias WHERE id='$categoria'";
+                            $resultCateg = mysqli_query($conn,$consultaCateg);
+                            $rowCateg = mysqli_fetch_assoc($resultCateg);
+                            $nombreCateg = $rowCateg['nombre'];
 
-                            $consultaCateg = "SELECT * FROM categorias WHERE id NOT IN(SELECT categoria FROM producto WHERE id='$id')";
-                            $resultCateg = mysqli_query($conn, $consultaCateg);
-                            while ($row = mysqli_fetch_assoc($resultCateg)) {
-                                $categoria = $row['nombre'];
-                                $idCateg = $row['id'];
-                                echo ("
-                                    <option value='$idCateg'>$categoria</option>
-                                    ");
-                            }
-                            echo ("</select></td>
+                            echo ("
+                            <tr>
+                            <td>$nombre</td>
+                            <td>$precio</td>
+                            <td>$stock unidades</td>
+                            <td>$nombreCateg</td>
                             <input type='hidden' value='$id' name='id'>
-                            <td><button class='btn btn-secondary w-100' type='submit'>Modificar</button></td>
+                            <td><a class='btn btn-secondary w-100' href='menuModificarProducto.php?id=$id&nombre=$nombre&precio=$precio&stock=$stock&categoria=$categoria&nombreCateg=$nombreCateg' role='button'>Modificar</a></td>
                             <td><a class='btn btn-secondary w-100' href='eliminarProducto.php?id=$id' role='button'>Eliminar</a></td>
                             <td><a class='btn btn-secondary w-100 mb-3' href='productoActivado.php?id=$id&estado=$estado' role='button'>$cambiar</a></td> 
-                            </tr>                         
-                            </form>                          
+                            </tr>                                                 
                             ");
                         }
                         ?>

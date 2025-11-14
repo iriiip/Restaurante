@@ -24,7 +24,7 @@ include("../head.php");
     <section class="d-flex align-items-center">
         <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col col-md-10 col-lg-8 col-xl-7">
+                <div class="col col-lg-7 col-xl-7 mb-3">
                     <div class="row justify-content-center caja text-center p-3">
                         <div class="col-12 mt-3 mb-3">
                             <h2>Carta</h2>
@@ -35,9 +35,8 @@ include("../head.php");
                                 <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
                             </div>
                         </form>
-                        <form action="" method='POST'>
-                            <div class="col-12 mb-3">
-                                <table class="table table-responsive tabla table-dark text-light">
+                            <div class="col-12">
+                                <table class="table tabla table-dark text-light">
                                     <tr>
                                         <th>Producto</th>
                                         <th>Precio</th>
@@ -55,21 +54,59 @@ include("../head.php");
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         $nombre = $row['nombre'];
                                         $precio = $row['precio'];
+                                        $id = $row['id'];
                                         echo ("
+                                    <form method='POST' action='anadirProducto.php'>
                                     <tr>
                                     <td>$nombre</td>
+                                    <input type='hidden' name='producto' value='$id'>
                                     <td>$precio €</td>
-                                    <td><a role='button' class='btn btn-secondary' href='#'>Añadir</a></td>
+                                    <td><button type='submit' class='btn btn-secondary'>Añadir</button></td>
                                     </tr>
+                                    </form>
                                     ");
                                     }
                                     ?>
                                 </table>
                             </div>
-                            <div class="col-12 mb-3">
-                                <button type="button" class="btn btn-secondary w-100">Pedir</button>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5 mt-md-0">
+                    <div class="row justify-content-center caja text-center p-3">
+                        <div class="col-12">
+                            <h2 class="mb-4">Pedido</h2>
+                            <?php
+                            if (!isset($_SESSION['carrito']))
+                                echo ("<h5>Tu pedido aparecerá aquí</h5>");
+                            else {
+                                echo ("<table class='table tabla table-dark text-light'>
+                                <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th></th>
+                                </tr>");
+                                foreach ($_SESSION['carrito'] as $item) {
+                                    $id = $item['id'];
+                                    $consulta = "SELECT nombre FROM producto WHERE id='$id'";
+                                    $result = mysqli_query($conn,$consulta);
+                                    $row = mysqli_fetch_assoc($result);
+                                    $nombre = $row['nombre'];
+                                    $cantidad = $item['cantidad'];
+                                    echo ("
+                                    <tr>
+                                    <td>$nombre</td>
+                                    <td>$cantidad</td>
+                                    <td><button class='btn btn-secondary'>Eliminar</button></td>
+                                    </tr>
+                                    ");
+                                }
+                                echo ("</table>");
+                            }
+                            ?>
+                            <div class="col-12">
+                                <a href="pedir.php" class="btn btn-secondary w-100 mt-3">Pedir</a>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
