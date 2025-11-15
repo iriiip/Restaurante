@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2025 a las 10:22:11
+-- Tiempo de generación: 15-11-2025 a las 16:12:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -65,9 +65,9 @@ CREATE TABLE `mesa` (
 
 INSERT INTO `mesa` (`num`, `estado`) VALUES
 (1, 1),
-(2, 0),
-(3, 0),
-(4, 0),
+(2, 1),
+(3, 1),
+(4, 1),
 (5, 0),
 (6, 0),
 (7, 0),
@@ -83,7 +83,7 @@ INSERT INTO `mesa` (`num`, `estado`) VALUES
 DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE `pedido` (
   `id` int(11) NOT NULL,
-  `estado` int(11) NOT NULL COMMENT '0-En curso 1-Entregado 2-Pagado',
+  `estado` int(11) NOT NULL COMMENT '1-En curso 2-Pagado',
   `dni` varchar(255) NOT NULL,
   `numMesa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -93,7 +93,7 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`) VALUES
-(885, 1, '12345678A', 1);
+(892, 1, '12345678A', 4);
 
 -- --------------------------------------------------------
 
@@ -107,8 +107,27 @@ CREATE TABLE `pedidoproducto` (
   `idPedido` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
+  `estado` int(11) NOT NULL COMMENT '0-En curso 1-Entregado',
   `comentario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pedidoproducto`
+--
+
+INSERT INTO `pedidoproducto` (`idLinea`, `idPedido`, `idProducto`, `cantidad`, `estado`, `comentario`) VALUES
+(4, 0, 18, 1, 0, '0'),
+(5, 0, 19, 1, 0, '0'),
+(6, 0, 19, 1, 0, '0'),
+(7, 0, 19, 1, 0, '0'),
+(8, 0, 20, 1, 0, '0'),
+(9, 0, 18, 1, 0, ''),
+(10, 0, 19, 1, 0, 'asdf'),
+(11, 892, 18, 1, 0, ''),
+(12, 892, 18, 2, 0, ''),
+(13, 892, 18, 1, 0, ''),
+(14, 892, 20, 2, 0, ''),
+(15, 892, 19, 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -131,13 +150,13 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
-(14, 'Rodaballo', 3, 3, 0, 11),
-(18, 'Filete de ternera', 5, 6, 0, 6),
-(19, 'Coca-Cola', 2, 78, 0, 9),
-(20, 'Fanta ', 1, 35, 0, 9),
+(18, 'Filete de ternera', 5, 0, 0, 6),
+(19, 'Coca-Cola', 2, 77, 0, 9),
+(20, 'Fanta ', 1, 1, 0, 9),
 (21, 'Calamares', 7, 5, 0, 8),
 (22, 'Tarta de queso', 6, 0, 0, 12),
-(23, 'Marinera', 0, 0, 0, 13);
+(23, 'Marinera', 0, 0, 0, 13),
+(27, 'Montadito', 2, 10, 0, 13);
 
 -- --------------------------------------------------------
 
@@ -153,6 +172,14 @@ CREATE TABLE `reserva` (
   `hora` varchar(255) NOT NULL,
   `numComensales` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`dni`, `numMesa`, `fecha`, `hora`, `numComensales`) VALUES
+('12345678A', 4, '15:11:2025', '15:48:27', 3),
+('12345678A', 4, '15:11:2025', '15:52:13', 3);
 
 -- --------------------------------------------------------
 
@@ -247,19 +274,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=886;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=893;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restricciones para tablas volcadas
