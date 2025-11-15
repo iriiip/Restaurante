@@ -35,27 +35,27 @@ include("../head.php");
                                 <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
                             </div>
                         </form>
-                            <div class="col-12">
-                                <table class="table tabla table-dark text-light">
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Precio</th>
-                                        <th></th>
-                                    </tr>
-                                    <?php
-                                    include("../conexion.php");
-                                    if (isset($_POST['producto'])) {
-                                        $producto = $_POST['producto'];
-                                        $consulta = "SELECT * FROM producto WHERE NOT stock=0 AND NOT estado=1 AND nombre LIKE '%$producto%'";
-                                    } else {
-                                        $consulta = "SELECT * FROM producto WHERE NOT stock=0 AND NOT estado=1";
-                                    }
-                                    $result = mysqli_query($conn, $consulta);
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        $nombre = $row['nombre'];
-                                        $precio = $row['precio'];
-                                        $id = $row['id'];
-                                        echo ("
+                        <div class="col-12">
+                            <table class="table tabla table-dark text-light">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th></th>
+                                </tr>
+                                <?php
+                                include("../conexion.php");
+                                if (isset($_POST['producto'])) {
+                                    $producto = $_POST['producto'];
+                                    $consulta = "SELECT * FROM producto WHERE NOT stock=0 AND NOT estado=1 AND nombre LIKE '%$producto%'";
+                                } else {
+                                    $consulta = "SELECT * FROM producto WHERE NOT stock=0 AND NOT estado=1";
+                                }
+                                $result = mysqli_query($conn, $consulta);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $nombre = $row['nombre'];
+                                    $precio = $row['precio'];
+                                    $id = $row['id'];
+                                    echo ("
                                     <form method='POST' action='anadirProducto.php'>
                                     <tr>
                                     <td>$nombre</td>
@@ -65,14 +65,14 @@ include("../head.php");
                                     </tr>
                                     </form>
                                     ");
-                                    }
-                                    ?>
-                                </table>
-                            </div>
+                                }
+                                ?>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-5 mt-md-0">
-                    <div class="row justify-content-center caja text-center p-3">
+                    <form class="row justify-content-center caja text-center p-3" action="pedir.php" method="POST">
                         <div class="col-12">
                             <h2 class="mb-4">Pedido</h2>
                             <?php
@@ -88,7 +88,7 @@ include("../head.php");
                                 foreach ($_SESSION['carrito'] as $item) {
                                     $id = $item['id'];
                                     $consulta = "SELECT nombre FROM producto WHERE id='$id'";
-                                    $result = mysqli_query($conn,$consulta);
+                                    $result = mysqli_query($conn, $consulta);
                                     $row = mysqli_fetch_assoc($result);
                                     $nombre = $row['nombre'];
                                     $cantidad = $item['cantidad'];
@@ -96,7 +96,10 @@ include("../head.php");
                                     <tr>
                                     <td>$nombre</td>
                                     <td>$cantidad</td>
-                                    <td><button class='btn btn-secondary'>Eliminar</button></td>
+                                    <td><a class='btn btn-secondary' role='button' href='eliminarProducto.php?id=$id'>Eliminar</a></td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan='3'><input type='text' name='comentario[$id]' placeholder='Comentario' class='form-control'></td>
                                     </tr>
                                     ");
                                 }
@@ -104,10 +107,20 @@ include("../head.php");
                             }
                             ?>
                             <div class="col-12">
-                                <a href="pedir.php" class="btn btn-secondary w-100 mt-3">Pedir</a>
+                                <p class="text-danger mb-3">
+                                    <?php
+                                    if (isset($_SESSION['sms'])) {
+                                        echo($_SESSION['sms']);
+                                        unset($_SESSION['sms']);
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-secondary w-100 mt-3">Pedir</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
