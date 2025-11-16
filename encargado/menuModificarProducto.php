@@ -23,7 +23,7 @@ include("../head.php");
             <div class="row justify-content-center">
                 <div class="col-12">
                     <form action="anadirProducto.php" method="POST" class="row caja text-center p-3 justify-content-center justify-content-md-around">
-                        <div class="col-12 h1">Añadir producto</div>
+                        <div class="col-12 h1">Mofidicar producto</div>
                         <div class='col-12 mt-2 mb-3'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de añadir un producto</div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Producto</label>
@@ -55,7 +55,7 @@ include("../head.php");
                             </select>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-secondary w-100 mt-3 mb-3">Añadir producto</button>
+                            <button type="submit" class="btn btn-secondary w-100 mt-3 mb-3">Mofidicar producto</button>
                         </div>
                     </form>
                 </div>

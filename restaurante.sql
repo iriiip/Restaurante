@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2025 a las 16:12:49
+-- Tiempo de generación: 16-11-2025 a las 13:41:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -93,7 +93,8 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`) VALUES
-(892, 1, '12345678A', 4);
+(892, 2, '12345678A', 4),
+(893, 1, '12345678A', 4);
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,17 @@ INSERT INTO `pedidoproducto` (`idLinea`, `idPedido`, `idProducto`, `cantidad`, `
 (12, 892, 18, 2, 0, ''),
 (13, 892, 18, 1, 0, ''),
 (14, 892, 20, 2, 0, ''),
-(15, 892, 19, 1, 0, '');
+(15, 892, 19, 1, 0, ''),
+(16, 892, 19, 1, 0, ''),
+(17, 892, 20, 1, 0, ''),
+(18, 892, 19, 1, 0, 'Con mucho hielo jefe'),
+(19, 892, 18, 1, 0, ''),
+(20, 892, 19, 1, 0, ''),
+(21, 892, 21, 1, 0, ''),
+(22, 892, 19, 1, 0, ''),
+(23, 892, 21, 1, 0, ''),
+(24, 892, 19, 1, 0, ''),
+(25, 892, 21, 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -151,12 +162,11 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
 (18, 'Filete de ternera', 5, 0, 0, 6),
-(19, 'Coca-Cola', 2, 77, 0, 9),
-(20, 'Fanta ', 1, 1, 0, 9),
-(21, 'Calamares', 7, 5, 0, 8),
+(19, 'Coca-Cola', 2, 72, 0, 9),
+(20, 'Fanta ', 1, 0, 0, 9),
+(21, 'Calamares', 7, 2, 0, 8),
 (22, 'Tarta de queso', 6, 0, 0, 12),
-(23, 'Marinera', 0, 0, 0, 13),
-(27, 'Montadito', 2, 10, 0, 13);
+(23, 'Marinera', 0, 0, 0, 13);
 
 -- --------------------------------------------------------
 
@@ -179,7 +189,8 @@ CREATE TABLE `reserva` (
 
 INSERT INTO `reserva` (`dni`, `numMesa`, `fecha`, `hora`, `numComensales`) VALUES
 ('12345678A', 4, '15:11:2025', '15:48:27', 3),
-('12345678A', 4, '15:11:2025', '15:52:13', 3);
+('12345678A', 4, '15:11:2025', '15:52:13', 3),
+('12345678A', 4, '16:11:2025', '13:32:16', 3);
 
 -- --------------------------------------------------------
 
@@ -274,13 +285,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=893;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=894;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

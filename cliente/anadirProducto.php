@@ -1,7 +1,7 @@
 <?php
 include("seguridad.php");
 include("../conexion.php");
-if (isset($_POST['producto'])) {
+if ($_SERVER['REQUEST_METHOD']==='POST') {
     $idProducto = $_POST['producto'];
     if (isset($_SESSION['carrito'][$idProducto])) {
         $_SESSION['carrito'][$idProducto]['cantidad']++;
