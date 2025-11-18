@@ -1,7 +1,7 @@
 <?php
 include("seguridad.php");
 include("../conexion.php");
-if (isset($_POST['nombre']) && $_POST['nombre']!="") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre']) && $_POST['nombre']!="") {
     $id = $_POST['id'];
     $nombre = $_POST['nombre'];
     $consulta = "UPDATE categorias SET nombre='$nombre' WHERE id='$id'";

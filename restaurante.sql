@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2025 a las 13:41:12
+-- Tiempo de generación: 18-11-2025 a las 17:21:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -64,10 +64,10 @@ CREATE TABLE `mesa` (
 --
 
 INSERT INTO `mesa` (`num`, `estado`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
+(1, 0),
+(2, 0),
+(3, 0),
+(4, 0),
 (5, 0),
 (6, 0),
 (7, 0),
@@ -94,7 +94,8 @@ CREATE TABLE `pedido` (
 
 INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`) VALUES
 (892, 2, '12345678A', 4),
-(893, 1, '12345678A', 4);
+(893, 2, '12345678A', 4),
+(894, 2, '12345678A', 4);
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,13 @@ INSERT INTO `pedidoproducto` (`idLinea`, `idPedido`, `idProducto`, `cantidad`, `
 (22, 892, 19, 1, 0, ''),
 (23, 892, 21, 1, 0, ''),
 (24, 892, 19, 1, 0, ''),
-(25, 892, 21, 1, 0, '');
+(25, 892, 21, 1, 0, ''),
+(26, 893, 19, 1, 1, ''),
+(27, 893, 21, 1, 1, ''),
+(29, 893, 19, 1, 0, 'Con mucho hielo jefe'),
+(30, 893, 21, 1, 0, ''),
+(32, 893, 19, 1, 0, '12 caracteres12 caracteres12 caracteres'),
+(33, 894, 19, 1, 1, '');
 
 -- --------------------------------------------------------
 
@@ -162,11 +169,13 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
 (18, 'Filete de ternera', 5, 0, 0, 6),
-(19, 'Coca-Cola', 2, 72, 0, 9),
+(19, 'Coca-Cola', 2, 66, 0, 9),
 (20, 'Fanta ', 1, 0, 0, 9),
-(21, 'Calamares', 7, 2, 0, 8),
+(21, 'Calamares', 7, 0, 0, 8),
 (22, 'Tarta de queso', 6, 0, 0, 12),
-(23, 'Marinera', 0, 0, 0, 13);
+(23, 'Marinera', 0, 0, 0, 13),
+(29, 'Filete', 5, 9, 0, 6),
+(30, 'Filete', 5, 10, 0, 6);
 
 -- --------------------------------------------------------
 
@@ -190,7 +199,8 @@ CREATE TABLE `reserva` (
 INSERT INTO `reserva` (`dni`, `numMesa`, `fecha`, `hora`, `numComensales`) VALUES
 ('12345678A', 4, '15:11:2025', '15:48:27', 3),
 ('12345678A', 4, '15:11:2025', '15:52:13', 3),
-('12345678A', 4, '16:11:2025', '13:32:16', 3);
+('12345678A', 4, '16:11:2025', '13:32:16', 3),
+('12345678A', 4, '18:11:2025', '17:13:38', 3);
 
 -- --------------------------------------------------------
 
@@ -285,19 +295,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=894;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=895;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas

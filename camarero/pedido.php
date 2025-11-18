@@ -74,6 +74,12 @@ include("../head.php");
                                 ?>
                             </table>
                         </div>
+                         <div class="col">
+                            <a role="button" class="btn btn-secondary w-100" href="imprimirCuenta.php">Imprimir cuenta</a>
+                        </div>
+                        <div class="col">
+                            <a role="button" class="btn btn-secondary w-100" href="pagado.php?mesa=<?php echo($mesa); ?>">Pagado</a>
+                        </div>
                     </div>
                 </div>
             </div>
