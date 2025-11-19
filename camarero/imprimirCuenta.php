@@ -72,11 +72,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         // Devolver la impresora al encoding normal
         $printer->getPrintConnector()->write("\x1B\x74\x00"); // PC437
 
-        $iva = 0.21; // 21% IVA
+        $iva = 0.1; // 10% IVA
 
         // Cálculos finales
-        $base_imponible = $total * 0.79;
-        $cuota_iva = $total - $base_imponible;
+        $base_imponible = $total / (1+$iva);
+        $cuota_iva = $base_imponible * $iva;
 
         // Cambiar la impresora al encoding para el euro
         $printer->getPrintConnector()->write("\x1B\x74\x13"); // PC858
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $printer->text(str_repeat("-", 36) . "\n");
         $printer->setJustification(Printer::JUSTIFY_RIGHT);
         $printer->text(sprintf("Base Imponible: %10.2f\xD5\n", $base_imponible));
-        $printer->text(sprintf("IVA (21%%): %15.2f\xD5\n", $cuota_iva));
+        $printer->text(sprintf("IVA (10%%): %15.2f\xD5\n", $cuota_iva));
         $printer->text(str_repeat("=", 36) . "\n");
         $printer->setEmphasis(true);
         $printer->text(sprintf("TOTAL: %18.2f\xD5\n", $total));
