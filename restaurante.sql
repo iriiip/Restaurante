@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2025 a las 17:21:04
+-- Tiempo de generación: 19-11-2025 a las 11:45:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -70,7 +70,7 @@ INSERT INTO `mesa` (`num`, `estado`) VALUES
 (4, 0),
 (5, 0),
 (6, 0),
-(7, 0),
+(7, 1),
 (8, 0),
 (9, 0);
 
@@ -95,7 +95,8 @@ CREATE TABLE `pedido` (
 INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`) VALUES
 (892, 2, '12345678A', 4),
 (893, 2, '12345678A', 4),
-(894, 2, '12345678A', 4);
+(894, 2, '12345678A', 4),
+(895, 1, '12345678A', 7);
 
 -- --------------------------------------------------------
 
@@ -118,34 +119,10 @@ CREATE TABLE `pedidoproducto` (
 --
 
 INSERT INTO `pedidoproducto` (`idLinea`, `idPedido`, `idProducto`, `cantidad`, `estado`, `comentario`) VALUES
-(4, 0, 18, 1, 0, '0'),
-(5, 0, 19, 1, 0, '0'),
-(6, 0, 19, 1, 0, '0'),
-(7, 0, 19, 1, 0, '0'),
-(8, 0, 20, 1, 0, '0'),
-(9, 0, 18, 1, 0, ''),
-(10, 0, 19, 1, 0, 'asdf'),
-(11, 892, 18, 1, 0, ''),
-(12, 892, 18, 2, 0, ''),
-(13, 892, 18, 1, 0, ''),
-(14, 892, 20, 2, 0, ''),
-(15, 892, 19, 1, 0, ''),
-(16, 892, 19, 1, 0, ''),
-(17, 892, 20, 1, 0, ''),
-(18, 892, 19, 1, 0, 'Con mucho hielo jefe'),
-(19, 892, 18, 1, 0, ''),
-(20, 892, 19, 1, 0, ''),
-(21, 892, 21, 1, 0, ''),
-(22, 892, 19, 1, 0, ''),
-(23, 892, 21, 1, 0, ''),
-(24, 892, 19, 1, 0, ''),
-(25, 892, 21, 1, 0, ''),
-(26, 893, 19, 1, 1, ''),
-(27, 893, 21, 1, 1, ''),
-(29, 893, 19, 1, 0, 'Con mucho hielo jefe'),
-(30, 893, 21, 1, 0, ''),
-(32, 893, 19, 1, 0, '12 caracteres12 caracteres12 caracteres'),
-(33, 894, 19, 1, 1, '');
+(39, 895, 18, 2, 0, ''),
+(40, 895, 19, 1, 0, ''),
+(41, 895, 31, 1, 0, ''),
+(42, 895, 33, 2, 0, '');
 
 -- --------------------------------------------------------
 
@@ -157,7 +134,7 @@ DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `precio` decimal(10,0) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `estado` int(11) NOT NULL COMMENT '0-Normal 1-Deshabilitado',
   `categoria` int(11) NOT NULL
@@ -168,14 +145,15 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
-(18, 'Filete de ternera', 5, 0, 0, 6),
-(19, 'Coca-Cola', 2, 66, 0, 9),
-(20, 'Fanta ', 1, 0, 0, 9),
-(21, 'Calamares', 7, 0, 0, 8),
-(22, 'Tarta de queso', 6, 0, 0, 12),
-(23, 'Marinera', 0, 0, 0, 13),
-(29, 'Filete', 5, 9, 0, 6),
-(30, 'Filete', 5, 10, 0, 6);
+(18, 'Filete de ternera', 5.00, 28, 0, 6),
+(19, 'Coca-Cola', 2.00, 60, 0, 9),
+(20, 'Fanta ', 1.00, 0, 0, 9),
+(21, 'Calamares', 7.00, 0, 0, 8),
+(22, 'Tarta de queso', 6.00, 0, 0, 12),
+(23, 'Marinera', 0.00, 0, 0, 13),
+(31, 'CafÃ©', 2.00, 49, 0, 9),
+(32, 'Hamburguesa', 4.00, 3, 0, 6),
+(33, 'SalmÃ³n', 7.50, 21, 0, 11);
 
 -- --------------------------------------------------------
 
@@ -200,7 +178,8 @@ INSERT INTO `reserva` (`dni`, `numMesa`, `fecha`, `hora`, `numComensales`) VALUE
 ('12345678A', 4, '15:11:2025', '15:48:27', 3),
 ('12345678A', 4, '15:11:2025', '15:52:13', 3),
 ('12345678A', 4, '16:11:2025', '13:32:16', 3),
-('12345678A', 4, '18:11:2025', '17:13:38', 3);
+('12345678A', 4, '18:11:2025', '17:13:38', 3),
+('12345678A', 7, '19:11:2025', '09:09:12', 3);
 
 -- --------------------------------------------------------
 
@@ -295,19 +274,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=895;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=896;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas

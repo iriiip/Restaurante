@@ -13,7 +13,7 @@
                     <a class="nav-link" href="carta.php" role="button">Carta</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-2">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="bi bi-person-fill"> <?php echo $_SESSION['name']; ?></a></i>

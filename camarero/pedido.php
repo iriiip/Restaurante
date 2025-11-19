@@ -21,7 +21,7 @@ include("../head.php");
     <section class="d-flex align-items-center">
         <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col col-md-10 col-lg-8 col-xl-7">
+                <div class="col col-md-10 col-lg-9 col-xl-8">
                     <div class="row justify-content-center caja text-center p-3">
                         <div class="col-12 mt-3 mb-3">
                             <h2>PEDIDO</h2>
@@ -74,8 +74,18 @@ include("../head.php");
                                 ?>
                             </table>
                         </div>
+                        <div class="col-12">
+                            <span class="text-danger">
+                                <?php
+                                if (isset($_SESSION['sms'])) {
+                                    echo $_SESSION['sms'];
+                                    unset($_SESSION['sms']);
+                                }
+                                ?>
+                            </span>
+                        </div>
                          <div class="col">
-                            <a role="button" class="btn btn-secondary w-100" href="imprimirCuenta.php">Imprimir cuenta</a>
+                            <a role="button" class="btn btn-secondary w-100" href="imprimirCuenta.php?mesa=<?php echo($mesa); ?>">Imprimir cuenta</a>
                         </div>
                         <div class="col">
                             <a role="button" class="btn btn-secondary w-100" href="pagado.php?mesa=<?php echo($mesa); ?>">Pagado</a>
