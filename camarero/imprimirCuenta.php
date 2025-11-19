@@ -57,11 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         // Contenido de la tabla
         $total = 0;
-        $consulta = "SELECT p.nombre, pp.cantidad, p.precio FROM producto AS p, pedidoproducto AS pp WHERE pp.idPedido='$pedido' AND p.id=pp.idProducto GROUP BY p.id";
+        $consulta = "SELECT p.nombre, SUM(pp.cantidad) AS cantidad, p.precio FROM producto AS p, pedidoproducto AS pp WHERE pp.idPedido='$pedido' AND p.id=pp.idProducto GROUP BY p.id";
         $result = mysqli_query($conn, $consulta);
         while ($row = mysqli_fetch_assoc($result)) {
             $nombre = $row['nombre'];
-            $nombre = iconv("UTF-8", "CP850//TRANSLIT", $nombre); 
+            $nombre = iconv("UTF-8", "CP850//TRANSLIT", $nombre);
             $cantidad = $row['cantidad'];
             $precio = $row['precio'];
             $total += $cantidad * $precio;
