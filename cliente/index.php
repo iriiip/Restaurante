@@ -44,7 +44,7 @@ include("../head.php");
                                 }
                                 ?>
                             </select>
-                            <input type="text" name="comensales" id="comensales" class="form-control" placeholder="Número de comensales">
+                            <input type="number" min="1" max="10" name="comensales" id="comensales" class="form-control" placeholder="Número de comensales">
                         </div>
                         <div class="col-12 mb-3">
                             <button type="submit" class="btn btn-secondary w-100">Seleccionar</button>

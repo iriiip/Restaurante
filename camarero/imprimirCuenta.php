@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $iva = 0.1; // 10% IVA
 
         // Cálculos finales
-        $base_imponible = $total / (1+$iva);
+        $base_imponible = $total / (1 + $iva);
         $cuota_iva = $base_imponible * $iva;
 
         // Cambiar la impresora al encoding para el euro
