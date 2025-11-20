@@ -1,5 +1,8 @@
 <?php
 include("seguridad.php");
+include("ocuparMesa.php");
+if (!ocupando())
+    header("LOCATION:index.php");
 ?>
 
 <!-- Head -->
@@ -36,7 +39,11 @@ include("../head.php");
                                 </tr>
                                 <?php
                                 include("../conexion.php");
-                                $mesa = $row[''];
+                                $dni = $_SESSION['dni'];
+                                $consulta = "SELECT numMesa FROM pedido WHERE dni='$dni' AND estado=1";
+                                $result = mysqli_query($conn,$consulta);
+                                $row = mysqli_fetch_assoc($result);
+                                $mesa = $row['numMesa'];
                                 $consulta = "SELECT idProducto, cantidad, estado, idLinea, comentario FROM pedidoproducto WHERE idPedido IN(SELECT id FROM pedido WHERE NOT estado=2 AND numMesa='$mesa')";
                                 $result = mysqli_query($conn, $consulta);
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -64,7 +71,7 @@ include("../head.php");
                                     else 
                                         echo("<td></td>");
                                     echo("
-                                    <td><a role='button' href='entregado.php?id=$idLinea&estado=$estado' class='btn btn-secondary'>$cambiar</a></td>
+                                    <td>$cambiar</td>
                                     </tr>
                                     ");
                                 }

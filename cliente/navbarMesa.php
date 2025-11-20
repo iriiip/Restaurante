@@ -10,16 +10,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="carta.php" role="button">Carta</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="pedido.php" role="button">Pedido</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
                     <a class="nav-link" href="facturas.php" role="button">Facturas</a>
                 </li>
             </ul>
