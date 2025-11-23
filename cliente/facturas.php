@@ -46,7 +46,7 @@ include("../head.php");
                                     <tr>
                                     <td>$id</td>
                                     <td>$fecha $hora</td>
-                                    <td><a role='button' href='generarPdf.php' class='btn btn-secondary'>Generar Pdf</a></td>
+                                    <td><a role='button' href='generarFactura.php?id=$id' class='btn btn-secondary' target='_blank'>Generar Pdf</a></td>
                                     </tr>
                                     ");
                                 }

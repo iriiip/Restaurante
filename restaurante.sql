@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2025 a las 13:53:19
+-- Tiempo de generación: 23-11-2025 a las 13:58:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -97,7 +97,8 @@ CREATE TABLE `pedido` (
 
 INSERT INTO `pedido` (`id`, `estado`, `dni`, `numMesa`, `fecha`, `hora`, `numComensales`) VALUES
 (897, 2, '12345678A', 1, '20:11:2025', '13:39:55', 3),
-(898, 1, '12345678A', 1, '20:11:2025', '13:47:51', 3);
+(898, 2, '12345678A', 1, '20:11:2025', '13:47:51', 3),
+(899, 1, '12345678A', 1, '23:11:2025', '13:33:03', 3);
 
 -- --------------------------------------------------------
 
@@ -129,8 +130,18 @@ INSERT INTO `pedidoproducto` (`idLinea`, `idPedido`, `idProducto`, `cantidad`, `
 (45, 896, 19, 2, 0, ''),
 (46, 897, 18, 1, 1, ''),
 (47, 897, 19, 1, 1, ''),
-(48, 898, 18, 1, 0, ''),
-(49, 898, 19, 1, 0, '');
+(48, 898, 18, 1, 1, ''),
+(49, 898, 19, 1, 1, ''),
+(50, 898, 18, 1, 1, ''),
+(51, 898, 19, 2, 1, 'Con hielo'),
+(52, 898, 31, 1, 1, ''),
+(53, 898, 32, 1, 1, ''),
+(54, 898, 33, 1, 1, ''),
+(55, 899, 18, 1, 0, ''),
+(56, 899, 19, 1, 0, 'Con hielo'),
+(57, 899, 31, 1, 0, ''),
+(58, 899, 32, 2, 0, ''),
+(59, 899, 33, 3, 0, '');
 
 -- --------------------------------------------------------
 
@@ -153,15 +164,15 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
-(18, 'Filete de ternera', 5.00, 15, 0, 6),
-(19, 'Coca-Cola', 2.00, 56, 0, 9),
+(18, 'Filete de ternera', 5.00, 13, 0, 6),
+(19, 'Coca-Cola', 2.00, 53, 0, 9),
 (20, 'Fanta ', 1.00, 0, 0, 9),
 (21, 'Calamares', 7.00, 0, 0, 8),
 (22, 'Tarta de queso', 6.00, 0, 0, 12),
 (23, 'Marinera', 0.00, 0, 0, 13),
-(31, 'CafÃ©', 2.00, 49, 0, 9),
-(32, 'Hamburguesa', 4.00, 3, 0, 6),
-(33, 'SalmÃ³n', 7.50, 21, 0, 11);
+(31, 'CafÃ©', 2.00, 47, 0, 9),
+(32, 'Hamburguesa', 4.00, 0, 0, 6),
+(33, 'SalmÃ³n', 7.50, 17, 0, 11);
 
 -- --------------------------------------------------------
 
@@ -249,13 +260,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=899;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=900;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
