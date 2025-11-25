@@ -7,8 +7,6 @@ $basededatos="restaurante";
 //con el usuario root y sin clave
 $conn= mysqli_connect($servidor,$user,$clave);
 
-//Todo lo que rescatemos lo pasaremos a UTF8
-mysqli_set_charset($conn,"utf8");
 //Seleccionamos la base de datos empresa
 mysqli_select_db($conn,$basededatos);
 //Imprimimos si hay algún error

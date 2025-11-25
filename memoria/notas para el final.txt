@@ -1,0 +1,1 @@
+la linea en conexion de cambiar a utf-8 hace que dejen de salir las tildes y no funcione cuando deberia ser al contrario

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2025 a las 13:58:55
+-- Tiempo de generación: 25-11-2025 a las 11:55:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -141,7 +141,38 @@ INSERT INTO `pedidoproducto` (`idLinea`, `idPedido`, `idProducto`, `cantidad`, `
 (56, 899, 19, 1, 0, 'Con hielo'),
 (57, 899, 31, 1, 0, ''),
 (58, 899, 32, 2, 0, ''),
-(59, 899, 33, 3, 0, '');
+(59, 899, 33, 3, 0, ''),
+(60, 899, 18, 1, 0, ''),
+(61, 899, 19, 1, 0, ''),
+(62, 899, 31, 1, 0, ''),
+(63, 899, 33, 1, 0, ''),
+(64, 899, 18, 1, 0, ''),
+(65, 899, 19, 2, 0, ''),
+(66, 899, 31, 1, 0, ''),
+(67, 899, 33, 1, 0, ''),
+(68, 899, 18, 1, 0, ''),
+(69, 899, 18, 1, 0, ''),
+(70, 899, 18, 3, 0, ''),
+(71, 899, 18, 2, 0, ''),
+(72, 899, 19, 1, 0, ''),
+(73, 899, 31, 1, 0, ''),
+(74, 899, 33, 3, 0, ''),
+(75, 899, 18, 1, 0, ''),
+(76, 899, 19, 1, 0, ''),
+(77, 899, 31, 2, 0, ''),
+(78, 899, 18, 3, 0, ''),
+(79, 899, 19, 1, 0, 'Con hielo'),
+(80, 899, 31, 1, 0, ''),
+(81, 899, 33, 2, 0, ''),
+(82, 899, 19, 2, 0, ''),
+(83, 899, 31, 1, 0, ''),
+(84, 899, 33, 3, 0, ''),
+(85, 899, 19, 2, 0, 'Con hielo'),
+(86, 899, 31, 1, 0, ''),
+(87, 899, 33, 3, 0, ''),
+(88, 899, 33, 1, 0, 'asasasasasasasasasasas'),
+(89, 899, 31, 1, 0, 'asasasasasasasasasasas'),
+(90, 899, 19, 1, 0, '012345678901234567890123456789');
 
 -- --------------------------------------------------------
 
@@ -164,15 +195,15 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
-(18, 'Filete de ternera', 5.00, 13, 0, 6),
-(19, 'Coca-Cola', 2.00, 53, 0, 9),
+(18, 'Filete de ternera', 5.00, 0, 0, 6),
+(19, 'Coca-Cola', 2.00, 42, 0, 9),
 (20, 'Fanta ', 1.00, 0, 0, 9),
 (21, 'Calamares', 7.00, 0, 0, 8),
 (22, 'Tarta de queso', 6.00, 0, 0, 12),
 (23, 'Marinera', 0.00, 0, 0, 13),
-(31, 'CafÃ©', 2.00, 47, 0, 9),
+(31, 'CafÃ©', 2.00, 38, 0, 9),
 (32, 'Hamburguesa', 4.00, 0, 0, 6),
-(33, 'SalmÃ³n', 7.50, 17, 0, 11);
+(33, 'SalmÃ³n', 7.50, 3, 0, 11);
 
 -- --------------------------------------------------------
 
@@ -266,7 +297,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `pedidoproducto`
 --
 ALTER TABLE `pedidoproducto`
-  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `idLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

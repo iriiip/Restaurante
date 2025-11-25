@@ -99,7 +99,7 @@ include("../head.php");
                                     <td><a class='btn btn-secondary' role='button' href='eliminarProducto.php?id=$id'>Eliminar</a></td>
                                     </tr>
                                     <tr>
-                                    <td colspan='3'><input type='text' name='comentario[$id]' placeholder='Comentario' class='form-control'></td>
+                                    <td colspan='3'><input type='text' name='comentario[$id]' placeholder='Comentario (20 caracteres máximo)' class='form-control'></td>
                                     </tr>
                                     ");
                                 }

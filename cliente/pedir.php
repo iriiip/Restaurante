@@ -3,10 +3,20 @@ include("seguridad.php");
 include("../conexion.php");
 if (isset($_SESSION['carrito']) && $_SERVER['REQUEST_METHOD']==='POST') {
     $dni = $_SESSION['dni'];
-    $consulta = "SELECT id FROM pedido WHERE dni='$dni' AND NOT estado=2";
+
+    $consulta = "SELECT id,numMesa FROM pedido WHERE dni='$dni' AND NOT estado=2";
     $result = mysqli_query($conn,$consulta);
     $row = mysqli_fetch_assoc($result);
     $idPedido = $row['id'];
+    $mesa = $row['numMesa'];
+    $_SESSION['mesa'] = $mesa;
+
+    $consultaLinea = "SELECT MAX(idLinea) AS idLinea FROM pedidoproducto WHERE idPedido='$idPedido'";
+    $resultLinea = mysqli_query($conn,$consultaLinea);
+    $rowLinea = mysqli_fetch_assoc($resultLinea);
+    $linea = $rowLinea['idLinea'];
+    $_SESSION['linea'] = $linea;
+
     foreach ($_SESSION['carrito'] as $item) {
         $idProducto = $item['id'];
         $cant = $item['cantidad'];
@@ -33,5 +43,5 @@ if (isset($_SESSION['carrito']) && $_SERVER['REQUEST_METHOD']==='POST') {
     }
     unset($_SESSION['carrito']);
 }
-header("LOCATION:carta.php");
+header("LOCATION:imprimirPedido.php");
 ?>
