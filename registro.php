@@ -34,11 +34,11 @@ include("head.php");
                         </div>
                         <div class="col-12 input-group mb-3">
                             <span class="input-group-text bi bi-envelope-fill"></span>
-                            <input class="form-control" type="text" name="mail" id="mail" placeholder="E-mail" required>
+                            <input class="form-control" type="email" name="mail" id="mail" placeholder="E-mail" required>
                         </div>
                         <div class="col-12 input-group mb-3">
                             <span class="input-group-text bi bi-phone-fill"></span>
-                            <input class="form-control" maxlength="9" minlength="9" type="text" name="tlf" id="tlf" placeholder="Teléfono" required>
+                            <input class="form-control" maxlength="9" minlength="9" type="tel" name="tlf" id="tlf" placeholder="Teléfono" required>
                         </div>
                         <div class="col-12 input-group mb-3">
                             <span class="input-group-text bi bi-person-fill"></span>
@@ -54,8 +54,9 @@ include("head.php");
                                 if (isset($_SESSION['sms'])) {
                                     echo $_SESSION['sms'];
                                     unset($_SESSION['sms']);
-                                } else
+                                } else {
                                     echo ("Todos los campos son obligatorios");
+                                }
                                 ?>
                             </small>
                         </div>

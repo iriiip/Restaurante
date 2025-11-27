@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" id="main_navbar">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="main_navbar">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -17,6 +17,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="productos.php" class="nav-link">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="camareros.php" class="nav-link">Camareros</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

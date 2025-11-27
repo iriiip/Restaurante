@@ -28,3 +28,4 @@ if (!isset($_SESSION['sms']))
     header("LOCATION:index.php");
 else
     header("LOCATION:registro.php");
+?>

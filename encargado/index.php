@@ -31,6 +31,10 @@ include("../head.php");
                             <h1>Productos</h1>
                             <a href="productos.php" class="btn btn-secondary">Acceder</a>
                         </div>
+                        <div class="col mb-3 mt-3">
+                            <h1>Camareros</h1>
+                            <a href="camareros.php" class="btn btn-secondary">Acceder</a>
+                        </div>
                     </div>
                 </div>
             </div>

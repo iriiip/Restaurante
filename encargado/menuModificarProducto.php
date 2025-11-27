@@ -22,25 +22,27 @@ include("../head.php");
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <form action="anadirProducto.php" method="POST" class="row caja text-center p-3 justify-content-center justify-content-md-around">
+                    <form action="modificarProducto.php" method="POST" class="row caja text-center p-3 justify-content-center justify-content-md-around">
                         <div class="col-12 h1">Mofidicar producto</div>
                         <div class='col-12 mt-2 mb-3'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de añadir un producto</div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Producto</label>
-                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" value=<?php echo($_GET['nombre']); ?>>
+                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" value=<?php echo ($_GET['nombre']); ?>>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Precio (€)</label>
-                            <input type="text" class="form-control" placeholder="Precio" name="precio" value=<?php echo($_GET['precio']); ?>>
+                            <input type="text" class="form-control" placeholder="Precio" name="precio" value=<?php echo ($_GET['precio']); ?>>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Stock</label>
-                            <input type="text" class="form-control" placeholder="Stock" name="stock" value=<?php echo($_GET['stock']); ?>>
+                            <input type="text" class="form-control" placeholder="Stock" name="stock" value=<?php echo ($_GET['stock']); ?>>
                         </div>
+                        <!-- id del producto escondida para modificar -->
+                        <input type="hidden" name="id" value=<?php echo ($_GET['id']); ?>>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Categoría</label>
                             <select name="categoria" id="" class="form-select">
-                                <option value=<?php echo($_GET['categoria']); ?> selected><?php echo($_GET['nombreCateg']); ?></option>
+                                <option value=<?php echo ($_GET['categoria']); ?> selected><?php echo ($_GET['nombreCateg']); ?></option>
                                 <?php
                                 include("../conexion.php");
                                 $categoria = $_GET['categoria'];
