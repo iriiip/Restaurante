@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php" role="button">Volver</a>
+                    <a class="nav-link" href="index.php" role="button">Menú</a>
                 </li>
                 <li class="nav-item">
                     <a href="categorias.php" class="nav-link">Categorías</a>
