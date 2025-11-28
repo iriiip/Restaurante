@@ -8,8 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tlf = $_POST['tlf'];
     $direccion = $_POST['direccion'];
     $contrasena = $_POST['contrasena'];
-    $consulta = "INSERT INTO usuario VALUES('$dni','$nombre',1,'$email','$tlf','$direccion',0,'$contrasena')";
+    $rol = $_POST['rol'];
+    $consulta = "INSERT INTO usuario VALUES('$dni','$nombre','$rol','$email','$tlf','$direccion',0,'$contrasena')";
     mysqli_query($conn, $consulta);
 }
-header("LOCATION:camareros.php");
+if ($rol==1)
+    header("LOCATION:camareros.php");
+else 
+    header("LOCATION:encargados.php");
 ?>

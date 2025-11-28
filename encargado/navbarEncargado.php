@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a href="camareros.php" class="nav-link">Camareros</a>
                 </li>
+                <li class="nav-item">
+                    <a href="encargados.php" class="nav-link">Encargados</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">

@@ -22,8 +22,8 @@ include("../head.php");
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <form action="registrarCamarero.php" method="POST" class="row caja text-center p-3 justify-content-center justify-content-md-around">
-                        <div class="col-12 h1">Registrar Camarero</div>
+                    <form action="registrarUsuario.php" method="POST" class="row caja text-center p-3 justify-content-center justify-content-md-around">
+                        <div class="col-12 h1">Registrar Usuario</div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Dni</label>
                             <input type="text" class="form-control" placeholder="Dni" name="dni" required>
@@ -48,8 +48,9 @@ include("../head.php");
                             <label for="" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" required>
                         </div>
+                        <input type="hidden" name="rol" value="<?php echo($_GET['rol']) ?>">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-secondary w-100 mt-3 mb-3">Registrar camarero</button>
+                            <button type="submit" class="btn btn-secondary w-100 mt-3 mb-3">Registrar usuario</button>
                         </div>
                     </form>
                 </div>
