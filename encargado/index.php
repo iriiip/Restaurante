@@ -39,6 +39,10 @@ include("../head.php");
                             <h1>Encargados</h1>
                             <a href="encargados.php" class="btn btn-secondary">Acceder</a>
                         </div>
+                        <div class="col mb-3 mt-3">
+                            <h1>Rendimiento</h1>
+                            <a href="rendimiento.php" class="btn btn-secondary">Acceder</a>
+                        </div>
                     </div>
                 </div>
             </div>

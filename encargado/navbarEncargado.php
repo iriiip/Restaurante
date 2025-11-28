@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a href="encargados.php" class="nav-link">Encargados</a>
                 </li>
+                <li class="nav-item">
+                    <a href="rendimiento.php" class="nav-link">Rendimiento</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
