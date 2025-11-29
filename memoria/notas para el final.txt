@@ -1,1 +1,3 @@
 la linea en conexion de cambiar a utf-8 hace que dejen de salir las tildes y no funcione cuando deberia ser al contrario
+He arreglado el footer que ya no se le meten las tablas dentro
+Modificar producto añadía en vez de modificar
