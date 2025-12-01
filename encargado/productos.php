@@ -32,6 +32,7 @@ include("../head.php");
                         <div class="table-responsive">
                         <table class="table tabla table-dark text-light">
                             <tr>
+                                <th>Imagen</th>
                                 <th>Producto</th>
                                 <th>Precio (€)</th>
                                 <th>Stock</th>
@@ -51,6 +52,7 @@ include("../head.php");
                             $stock = $row['stock'];
                             $estado = $row['estado'];
                             $categoria = $row['categoria'];
+                            $img = $row['img'];
 
                             if ($estado == 0)
                                 $cambiar = "Desactivar";
@@ -64,6 +66,7 @@ include("../head.php");
 
                             echo ("
                             <tr>
+                            <td><img src='$img' width='50'></td>
                             <td>$nombre</td>
                             <td>$precio</td>
                             <td>$stock unidades</td>

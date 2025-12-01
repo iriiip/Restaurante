@@ -22,7 +22,7 @@ include("../head.php");
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <form action="anadirProducto.php" method="POST" class="row caja text-center p-3 justify-content-center justify-content-md-around">
+                    <form action="anadirProducto.php" enctype="multipart/form-data" method="POST" class="row caja text-center p-3 justify-content-center justify-content-md-around">
                         <div class="col-12 h1">Añadir producto</div>
                         <div class='col-12 mt-2 mb-3'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de añadir un producto</div>
                         <div class="col-6 mb-3">
@@ -52,6 +52,10 @@ include("../head.php");
                                 }
                                 ?>
                             </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="" class="form-label">Imagen</label>
+                            <input type="file" class="form-control" name="img" id="">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-secondary w-100 mt-3 mb-3">Añadir producto</button>

@@ -38,7 +38,7 @@ include("../head.php");
                         <div class="col-12">
                             <table class="table tabla table-dark text-light">
                                 <tr>
-                                    <th>Producto</th>
+                                    <th colspan="2">Producto</th>
                                     <th>Precio</th>
                                     <th></th>
                                 </tr>
@@ -54,10 +54,12 @@ include("../head.php");
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $nombre = $row['nombre'];
                                     $precio = $row['precio'];
+                                    $img = $row['img'];
                                     $id = $row['id'];
                                     echo ("
                                     <form method='POST' action='anadirProducto.php'>
                                     <tr>
+                                    <td><img src='$img' width='50'></td>
                                     <td>$nombre</td>
                                     <input type='hidden' name='producto' value='$id'>
                                     <td>$precio €</td>
