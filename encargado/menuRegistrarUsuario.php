@@ -48,10 +48,17 @@ include("../head.php");
                             <label for="" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" required>
                         </div>
-                        <input type="hidden" name="rol" value="<?php echo($_GET['rol']) ?>">
+                        <input type="hidden" name="rol" value="<?php echo ($_GET['rol']) ?>">
                         <div class="col-12">
                             <button type="submit" class="btn btn-secondary w-100 mt-3 mb-3">Registrar usuario</button>
                         </div>
+                        <?php
+                        if (isset($_SESSION['sms'])) {
+                            $sms = $_SESSION['sms'];
+                            echo ("<small class='text-danger'>$sms</small>");
+                            unset($_SESSION['sms']);
+                        }
+                        ?>
                     </form>
                 </div>
             </div>

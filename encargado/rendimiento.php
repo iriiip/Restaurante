@@ -36,20 +36,29 @@ include("../head.php");
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $fecha = date("d:m:Y", strtotime($_POST['fecha']));
                         $consulta = "SELECT SUM(numComensales) as comensales FROM pedido WHERE fecha='$fecha'";
-                        $result = mysqli_query($conn,$consulta);
+                        $result = mysqli_query($conn, $consulta);
                         $row = mysqli_fetch_assoc($result);
                         $comensales = $row['comensales'];
-                        $consulta = "
+                        if ($comensales == 0) {
+                            echo ("
+                            <div class='row text-center'>
+                            <div class='col'>
+                            <p class='text-danger text-center'>No hay datos para esta fecha</p>
+                            </div>
+                            </div>
+                            ");
+                        } else {
+                            $consulta = "
                         SELECT SUM(p.precio*pp.cantidad) as total 
                         FROM producto AS p, pedidoproducto AS pp 
                         WHERE p.id=pp.idProducto 
                         AND p.id IN(SELECT idProducto FROM pedidoproducto WHERE idPedido IN(SELECT id FROM pedido WHERE fecha='$fecha')) 
                         AND pp.idPedido IN(SELECT id FROM pedido WHERE fecha='$fecha')
                         ";
-                        $result = mysqli_query($conn,$consulta);
-                        $row = mysqli_fetch_assoc($result);
-                        $total = $row['total'];
-                        echo("
+                            $result = mysqli_query($conn, $consulta);
+                            $row = mysqli_fetch_assoc($result);
+                            $total = $row['total'];
+                            echo ("
                         <div class='row caja text-center'>
                         <div class='col mt-3 mb-3'>
                         <h1>Comensales</h1>
@@ -61,6 +70,7 @@ include("../head.php");
                         </div>
                         </div>
                         ");
+                        }
                     }
                     ?>
                 </div>

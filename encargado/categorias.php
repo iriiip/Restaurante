@@ -60,6 +60,7 @@ include("../head.php");
                                         unset($_SESSION['sms']);
                                     }
                                     ?>
+                                </div>
                             </table>
                         </div>
                     </div>

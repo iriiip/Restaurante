@@ -27,19 +27,19 @@ include("../head.php");
                         <div class='col-12 mt-2 mb-3'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de añadir un producto</div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Producto</label>
-                            <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Precio (€)</label>
-                            <input type="text" class="form-control" placeholder="Precio" name="precio">
+                            <input type="text" class="form-control" placeholder="Precio" name="precio" required>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Stock</label>
-                            <input type="text" class="form-control" placeholder="Stock" name="stock">
+                            <input type="text" class="form-control" placeholder="Stock" name="stock" required>
                         </div>
                         <div class="col-6 mb-3">
                             <label for="" class="form-label">Categoría</label>
-                            <select name="categoria" id="" class="form-select">
+                            <select name="categoria" id="" class="form-select" required>
                                 <option value="">Elige una categoria</option>
                                 <?php
                                 include("../conexion.php");
@@ -55,7 +55,7 @@ include("../head.php");
                         </div>
                         <div class="col-12 mb-3">
                             <label for="" class="form-label">Imagen</label>
-                            <input type="file" class="form-control" name="img" id="">
+                            <input type="file" class="form-control" name="img" id="" required>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-secondary w-100 mt-3 mb-3">Añadir producto</button>

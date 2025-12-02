@@ -31,7 +31,8 @@ include("../head.php");
                             <table class="table tabla table-dark text-light">
                                 <?php
                                 include("../conexion.php");
-                                $consulta = "SELECT * FROM usuario WHERE rol=2";
+                                $dni = $_SESSION['dni'];
+                                $consulta = "SELECT * FROM usuario WHERE rol=2 AND NOT dni='$dni'";
                                 $result = mysqli_query($conn, $consulta);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $dni = $row['dni'];

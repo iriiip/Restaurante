@@ -27,44 +27,54 @@ include("../head.php");
                 <div class="col-12">
                     <div class="row caja text-center p-3 justify-content-center justify-content-md-around">
                         <div class="col-12 h1">Productos</div>
-                            <div class='col-12 mt-2'><a class='btn btn-secondary' role="button" href="menuAnadirProducto.php">Añadir producto</a></div>
-                        <div class='col-12 mt-5'>El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de modificar un producto</div>
+                        <div class='col-12 mt-2'><a class='btn btn-secondary' role="button" href="menuAnadirProducto.php">Añadir producto</a></div>
+                        <div class="col-12 mt-5">
+                            <?php
+                            if (isset($_SESSION['sms'])) {
+                                $sms = $_SESSION['sms'];
+                                echo ("<small class='text-danger'>$sms</small>");
+                                unset($_SESSION['sms']);
+                            } else {
+                                echo ("El precio y el stock de los productos deben ser valores numéricos sin texto a la hora de modificar un producto");
+                            }
+                            ?>
+                        </div>
                         <div class="table-responsive">
-                        <table class="table tabla table-dark text-light">
-                            <tr>
-                                <th>Imagen</th>
-                                <th>Producto</th>
-                                <th>Precio (€)</th>
-                                <th>Stock</th>
-                                <th>Categoría</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        <?php
-                        include("../conexion.php");
-                        $consulta = "SELECT * FROM producto";
-                        $result = mysqli_query($conn, $consulta);
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $id = $row['id'];
-                            $nombre = $row['nombre'];
-                            $precio = $row['precio']."€";
-                            $stock = $row['stock'];
-                            $estado = $row['estado'];
-                            $categoria = $row['categoria'];
-                            $img = $row['img'];
+                            <table class="table tabla table-dark text-light">
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Producto</th>
+                                    <th>Precio (€)</th>
+                                    <th>Stock</th>
+                                    <th>Categoría</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <?php
+                                include("../conexion.php");
+                                $consulta = "SELECT * FROM producto";
+                                $result = mysqli_query($conn, $consulta);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $id = $row['id'];
+                                    $nombre = $row['nombre'];
+                                    $precio = $row['precio'] . "€";
+                                    $stock = $row['stock'];
+                                    $estado = $row['estado'];
+                                    $categoria = $row['categoria'];
+                                    $img = $row['img'];
 
-                            if ($estado == 0)
-                                $cambiar = "Desactivar";
-                            else
-                                $cambiar = "Activar";
+                                    if ($estado == 0)
+                                        $cambiar = "Desactivar";
+                                    else
+                                        $cambiar = "Activar";
 
-                            $consultaCateg = "SELECT nombre FROM categorias WHERE id='$categoria'";
-                            $resultCateg = mysqli_query($conn,$consultaCateg);
-                            $rowCateg = mysqli_fetch_assoc($resultCateg);
-                            $nombreCateg = $rowCateg['nombre'];
+                                    $consultaCateg = "SELECT nombre FROM categorias WHERE id='$categoria'";
+                                    $resultCateg = mysqli_query($conn, $consultaCateg);
+                                    $rowCateg = mysqli_fetch_assoc($resultCateg);
+                                    $nombreCateg = $rowCateg['nombre'];
 
-                            echo ("
+                                    echo ("
                             <tr>
                             <td><img src='$img' width='50'></td>
                             <td>$nombre</td>
@@ -77,9 +87,9 @@ include("../head.php");
                             <td><a class='btn btn-secondary w-100 mb-3' href='productoActivado.php?id=$id&estado=$estado' role='button'>$cambiar</a></td> 
                             </tr>                                                 
                             ");
-                        }
-                        ?>
-                        </table>
+                                }
+                                ?>
+                            </table>
                         </div>
                     </div>
                 </div>

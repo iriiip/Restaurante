@@ -78,30 +78,32 @@ include("../head.php");
                         <div class="col-12">
                             <h2 class="mb-4">Pedido</h2>
                             <?php
-                            if (!isset($_SESSION['carrito']))
+                            if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito']))
                                 echo ("<h5>Tu pedido aparecerá aquí</h5>");
                             else {
                                 echo ("<table class='table tabla table-dark text-light'>
                                 <tr>
-                                <th>Producto</th>
+                                <th colspan='2'>Producto</th>
                                 <th>Cantidad</th>
                                 <th></th>
                                 </tr>");
                                 foreach ($_SESSION['carrito'] as $item) {
                                     $id = $item['id'];
-                                    $consulta = "SELECT nombre FROM producto WHERE id='$id'";
+                                    $consulta = "SELECT nombre, img FROM producto WHERE id='$id'";
                                     $result = mysqli_query($conn, $consulta);
                                     $row = mysqli_fetch_assoc($result);
                                     $nombre = $row['nombre'];
+                                    $img = $row['img'];
                                     $cantidad = $item['cantidad'];
                                     echo ("
                                     <tr>
+                                    <td><img src='$img' width='50'></td>
                                     <td>$nombre</td>
                                     <td>$cantidad</td>
                                     <td><a class='btn btn-secondary' role='button' href='eliminarProducto.php?id=$id'>Eliminar</a></td>
                                     </tr>
                                     <tr>
-                                    <td colspan='3'><input type='text' name='comentario[$id]' placeholder='Comentario (20 caracteres máximo)' class='form-control'></td>
+                                    <td colspan='4'><input type='text' name='comentario[$id]' placeholder='Comentario (20 caracteres máximo)' class='form-control'></td>
                                     </tr>
                                     ");
                                 }

@@ -16,11 +16,13 @@ include("head.php");
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dni = $_POST['dni'];
         $pass = $_POST['pass'];
-        $consulta = "SELECT rol, nombre FROM usuario WHERE dni='$dni' AND contrasena='$pass'";
+        $consulta = "SELECT rol, nombre, estado FROM usuario WHERE dni='$dni' AND contrasena='$pass'";
         $result = mysqli_query($conn, $consulta);
         $row = mysqli_fetch_array($result);
         if (mysqli_num_rows($result) != 1)
-            $sms = "Dni o contraseña incorrecto";
+            $_SESSION['sms'] = "Dni o contraseña incorrecto";
+        else if ($row['estado']==1)
+            $_SESSION['sms'] = "Cuenta bloqueada";
         else {
             $rol = $row['rol'];
             $nombre = $row['nombre'];

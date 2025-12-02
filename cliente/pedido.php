@@ -32,7 +32,7 @@ include("../head.php");
                         <div class="col-12 mb-3 table-responsive">
                             <table class="table tabla table-dark text-light">
                                 <tr>
-                                    <th>Producto</th>
+                                    <th colspan="2">Producto</th>
                                     <th>Cantidad</th>
                                     <th>Notas</th>
                                     <th>Estado</th>
@@ -56,12 +56,14 @@ include("../head.php");
                                         $cambiar = "En curso";
                                     else
                                         $cambiar = "Entregado";
-                                    $consulta2 = "SELECT nombre FROM producto WHERE id='$id'";
+                                    $consulta2 = "SELECT nombre, img FROM producto WHERE id='$id'";
                                     $result2 = mysqli_query($conn, $consulta2);
                                     $row2 = mysqli_fetch_assoc($result2);
                                     $producto = $row2['nombre'];
+                                    $img = $row2['img'];
                                     echo ("
                                     <tr>
+                                    <td><img src='$img' width='50'></td>
                                     <td>$producto</td>
                                     <td>$cantidad unidades</td>
                                     

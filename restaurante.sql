@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2025 a las 11:55:37
+-- Tiempo de generación: 02-12-2025 a las 09:39:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -135,12 +135,10 @@ INSERT INTO `pedidoproducto` (`idLinea`, `idPedido`, `idProducto`, `cantidad`, `
 (50, 898, 18, 1, 1, ''),
 (51, 898, 19, 2, 1, 'Con hielo'),
 (52, 898, 31, 1, 1, ''),
-(53, 898, 32, 1, 1, ''),
 (54, 898, 33, 1, 1, ''),
 (55, 899, 18, 1, 0, ''),
 (56, 899, 19, 1, 0, 'Con hielo'),
 (57, 899, 31, 1, 0, ''),
-(58, 899, 32, 2, 0, ''),
 (59, 899, 33, 3, 0, ''),
 (60, 899, 18, 1, 0, ''),
 (61, 899, 19, 1, 0, ''),
@@ -187,23 +185,22 @@ CREATE TABLE `producto` (
   `precio` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `estado` int(11) NOT NULL COMMENT '0-Normal 1-Deshabilitado',
-  `categoria` int(11) NOT NULL
+  `categoria` int(11) NOT NULL,
+  `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
-(18, 'Filete de ternera', 5.00, 0, 0, 6),
-(19, 'Coca-Cola', 2.00, 42, 0, 9),
-(20, 'Fanta ', 1.00, 0, 0, 9),
-(21, 'Calamares', 7.00, 0, 0, 8),
-(22, 'Tarta de queso', 6.00, 0, 0, 12),
-(23, 'Marinera', 0.00, 0, 0, 13),
-(31, 'CafÃ©', 2.00, 38, 0, 9),
-(32, 'Hamburguesa', 4.00, 0, 0, 6),
-(33, 'SalmÃ³n', 7.50, 3, 0, 11);
+INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `estado`, `categoria`, `img`) VALUES
+(18, 'Filete', 12.00, 100, 0, 6, '../img/1764584648.png'),
+(19, 'Coca-Cola', 3.00, 100, 0, 9, '../img/1764584796.png'),
+(21, 'Calamares', 15.00, 100, 0, 8, '../img/1764584894.png'),
+(22, 'Tarta de queso', 6.00, 100, 0, 12, '../img/1764584970.png'),
+(23, 'Marinera', 1.50, 100, 0, 13, '../img/1764585411.png'),
+(31, 'CafÃ©', 2.00, 100, 1, 9, '../img/1764585226.png'),
+(33, 'SalmÃ³n', 12.50, 100, 0, 11, '../img/1764585317.png');
 
 -- --------------------------------------------------------
 
@@ -230,7 +227,8 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`dni`, `nombre`, `rol`, `email`, `telefono`, `direccion`, `estado`, `contrasena`) VALUES
 ('12345678A', 'cliente cliente', 0, 'cliente@restaurante.com', '123123123', 'cliente', 0, '1234'),
 ('12345678B', 'camarero camarero', 1, 'camarero@restaurante.com', '123123123', 'camarero', 0, '1234'),
-('12345678C', 'encargado encargado', 2, 'encargado@restaurante.com', '123123123', 'encargado', 0, '1234');
+('12345678C', 'encargado encargado', 2, 'encargado@restaurante.com', '123123123', 'encargado', 0, '1234'),
+('12345678D', 'encargado2', 2, 'encargado2@restaurante.com', '123123123', 'encargado2', 0, '1234');
 
 --
 -- Índices para tablas volcadas
